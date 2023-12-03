@@ -7,8 +7,8 @@
     <packaging>jar</packaging>
     <dependencies>
         <dependency>
-            <groupId>mongo</groupId>
-            <artifactId>mongo</artifactId>
+            <groupId>mongodb</groupId>
+            <artifactId>mongodb</artifactId>
             <version>1</version>
         </dependency>
         <dependency>
@@ -16,6 +16,11 @@
             <artifactId>mongo-java-driver</artifactId>
             <version>3.12.11</version>
             <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>org.netbeans.external</groupId>
+            <artifactId>AbsoluteLayout</artifactId>
+            <version>RELEASE180</version>
         </dependency>
     </dependencies>
     <properties>

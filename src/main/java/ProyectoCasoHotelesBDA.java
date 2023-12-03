@@ -16,6 +16,6 @@ public class ProyectoCasoHotelesBDA {
         System.out.println("Hello World!");
         MongoClient mongoClient = new MongoClient("localhost", 27017);
         MongoDatabase database = mongoClient.getDatabase("tienda");
-        System.out.println(database);
+        System.out.println("TEST: " + database);
     }
 }

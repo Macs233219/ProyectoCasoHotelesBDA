@@ -10,6 +10,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import static com.mongodb.client.model.Filters.eq;
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import org.bson.Document;
 
@@ -19,46 +20,44 @@ import org.bson.Document;
  */
 public class frmHoteles extends javax.swing.JFrame {
 
-    MongoClient mongoClient = new MongoClient("localhost",27017);
+    MongoClient mongoClient = new MongoClient("localhost", 27017);
     MongoDatabase database = mongoClient.getDatabase("hotel_proyecto");
     MongoCollection<Document> hotelCollection = database.getCollection("hotel");
     MongoCollection<Document> categoriaCollection = database.getCollection("categoria");
-    
-    
+    ArrayList<String> hoteles;
+    String hotelSeleccionado;
+
     /**
      * Creates new form frmHoteles
      */
     public frmHoteles() {
+        this.hoteles = new ArrayList<>();
+        this.hotelSeleccionado = "";
         initComponents();
 //        insertar();
         mostrar();
     }
-    
-    
-    private void insertar()
-    {
-//        
-//        Document hotel= new Document("_id","1")
-//                .append("nombre", "Fiesta Inn")
-//                .append("direccion", "Avenida Flores 503")
-//                .append("telefono", 6442121212L)
-//                .append("anioConstruccion", "2019")
-//                .append("idCategoria", "1");
+
+    private void insertar() {
+//        Document hotel= new Document("_id","2")
+//                .append("nombre", "El Dorado")
+//                .append("direccion", "Avenida El Pino 522")
+//                .append("telefono", 6442654321L)
+//                .append("anioConstruccion", "2017")
+//                .append("idCategoria", "2");
 //        
 //        hotelCollection.insertOne(hotel);
 //        
-//        Document categoria = new Document("_id","1")
-//                .append("estrellas", 3.5)
-//                .append("IVA", 5.5);
+//        Document categoria = new Document("_id","2")
+//                .append("estrellas", 4.0)
+//                .append("IVA", 4.5);
 //        
 //        categoriaCollection.insertOne(categoria);
     }
-    
-    
-    private void mostrar()
-    {
+
+    private void mostrar() {
         MongoCursor<Document> cursor = hotelCollection.find().iterator();
-        
+
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("Nombre");
         model.addColumn("Dirección");
@@ -67,29 +66,23 @@ public class frmHoteles extends javax.swing.JFrame {
         model.addColumn("Estrellas");
         model.addColumn("IVA");
 
-        
-        
-        
-        
-        
-        while(cursor.hasNext())
-        {
+        while (cursor.hasNext()) {
             Document doc = cursor.next();
             Document user = categoriaCollection.find(eq("_id", doc.getString("idCategoria"))).first();
-            model.addRow(new Object[]
-            {
+            model.addRow(new Object[]{
                 doc.getString("nombre"),
                 doc.getString("direccion"),
                 doc.getLong("telefono"),
                 doc.getString("anioConstruccion"),
                 user.getDouble("estrellas"),
-                user.getDouble("IVA") 
+                user.getDouble("IVA")
             });
-            
+
             tblHoteles.setModel(model);
+
+            this.hoteles.add(doc.getString("_id"));
         }
-        
-        
+
     }
 
     /**
@@ -105,6 +98,8 @@ public class frmHoteles extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblHoteles = new javax.swing.JTable();
+        btnVerHabitaciones = new javax.swing.JButton();
+        btnVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -126,7 +121,28 @@ public class frmHoteles extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblHoteles.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblHotelesMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblHoteles);
+
+        btnVerHabitaciones.setBackground(new java.awt.Color(255, 255, 204));
+        btnVerHabitaciones.setText("Ver habitaciones");
+        btnVerHabitaciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerHabitacionesActionPerformed(evt);
+            }
+        });
+
+        btnVolver.setBackground(new java.awt.Color(255, 255, 204));
+        btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -138,7 +154,12 @@ public class frmHoteles extends javax.swing.JFrame {
                 .addGap(254, 254, 254))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(56, 56, 56)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 757, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnVerHabitaciones)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnVolver))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 757, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -148,7 +169,11 @@ public class frmHoteles extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(50, 50, 50)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnVerHabitaciones)
+                    .addComponent(btnVolver))
+                .addGap(14, 14, 14))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -165,6 +190,31 @@ public class frmHoteles extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void tblHotelesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHotelesMouseClicked
+        // TODO add your handling code here:
+        int row = this.tblHoteles.getSelectedRow();
+        this.hotelSeleccionado = this.hoteles.get(row);
+        System.out.println("HOTEL: " + hotelSeleccionado);
+    }//GEN-LAST:event_tblHotelesMouseClicked
+
+    private void btnVerHabitacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerHabitacionesActionPerformed
+        // TODO add your handling code here:
+        if (!"".equals(this.hotelSeleccionado)) {
+            frmHabitaciones newFrm = new frmHabitaciones();
+            newFrm.setHotelSeleccionado(hotelSeleccionado);
+            newFrm.mostrar();
+            newFrm.setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_btnVerHabitacionesActionPerformed
+
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        // TODO add your handling code here:
+        frmInicio newFrm = new frmInicio();
+        newFrm.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnVolverActionPerformed
 
     /**
      * @param args the command line arguments
@@ -202,6 +252,8 @@ public class frmHoteles extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnVerHabitaciones;
+    private javax.swing.JButton btnVolver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

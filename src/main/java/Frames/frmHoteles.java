@@ -35,7 +35,7 @@ public class frmHoteles extends javax.swing.JFrame {
     }
     
     
-    public void insertar()
+    private void insertar()
     {
 //        
 //        Document hotel= new Document("_id","1")
@@ -43,10 +43,10 @@ public class frmHoteles extends javax.swing.JFrame {
 //                .append("direccion", "Avenida Flores 503")
 //                .append("telefono", 6442121212L)
 //                .append("anioConstruccion", "2019")
-//                .append("idCategoria", "01");
+//                .append("idCategoria", "1");
 //        
 //        hotelCollection.insertOne(hotel);
-        
+//        
 //        Document categoria = new Document("_id","1")
 //                .append("estrellas", 3.5)
 //                .append("IVA", 5.5);
@@ -55,7 +55,7 @@ public class frmHoteles extends javax.swing.JFrame {
     }
     
     
-    public void mostrar()
+    private void mostrar()
     {
         MongoCursor<Document> cursor = hotelCollection.find().iterator();
         

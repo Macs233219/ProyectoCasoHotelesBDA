@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package Frames;
 
 import com.mongodb.MongoClient;
@@ -12,9 +9,11 @@ import static com.mongodb.client.model.Filters.eq;
 import javax.swing.table.DefaultTableModel;
 import org.bson.Document;
 
+
 /**
- *
- * @author grupo
+ * Clase donde se mostrarán las habitaciones registradas.
+ * @author Canché Sastré Marlon Alejandro
+ * @author Sánchez Rentería Juan Diego
  */
 public class frmHabitaciones extends javax.swing.JFrame {
 
@@ -24,8 +23,10 @@ public class frmHabitaciones extends javax.swing.JFrame {
     MongoCollection<Document> tarifaCollection = database.getCollection("tarifa");
     String hotelSeleccionado;
     
-    /** or
-     * Creates new form frmHabitaciones
+   
+    
+    /**
+     * Método constructor de la clase.
      */
     public frmHabitaciones() {
         initComponents();
@@ -33,6 +34,9 @@ public class frmHabitaciones extends javax.swing.JFrame {
 //        this.mostrar();
     }
     
+    /**
+     * Método para insertar datos referentes a las habitaciones.
+     */
     private void insertar() {
 //        Document habitacion = new Document("_id", "1")
 //                .append("tipo", "Suite")
@@ -75,6 +79,9 @@ public class frmHabitaciones extends javax.swing.JFrame {
         
     }
     
+    /**
+     * Método para mostrar los datos de las habitaciones registradas.
+     */
     public void mostrar() {
         MongoCursor<Document> cursor = habitacionCollection.find(eq("idHotel", this.hotelSeleccionado)).iterator();
         
@@ -97,6 +104,10 @@ public class frmHabitaciones extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Método para establecer el hotel que se haya seleccionado previamente.
+     * @param hotelSeleccionado Cadena con el nombre del hotel seleccionado.
+     */
     public void setHotelSeleccionado(String hotelSeleccionado) {
         this.hotelSeleccionado = hotelSeleccionado;
     }
@@ -213,11 +224,19 @@ public class frmHabitaciones extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Botón para redireccionar a la pantalla de reservas.
+     * @param evt Evento que accionó el botón.
+     */
     private void btnReservarHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReservarHabitacionActionPerformed
         // TODO add your handling code here:
         System.out.println("RESERVA PARA HOTEL: " + this.hotelSeleccionado);
     }//GEN-LAST:event_btnReservarHabitacionActionPerformed
 
+    /**
+     * Botón para volver a la pantalla anterior.
+     * @param evt Evento que accionó el botón.
+     */
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         // TODO add your handling code here:
         frmHoteles newFrm = new frmHoteles();
@@ -225,40 +244,7 @@ public class frmHabitaciones extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmHabitaciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmHabitaciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmHabitaciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmHabitaciones.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new frmHabitaciones().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnReservarHabitacion;

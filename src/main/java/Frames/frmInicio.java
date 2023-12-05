@@ -1,17 +1,15 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package Frames;
 
 /**
- *
- * @author PC
+ * Clase donde se mostrará el menú principal de la aplicación.
+ * @author Canché Sastré Marlon Alejandro
+ * @author Sánchez Rentería Juan Diego
  */
 public class frmInicio extends javax.swing.JFrame {
 
     /**
-     * Creates new form frmInicio
+     * Método constructor de la clase.
      */
     public frmInicio() {
         initComponents();
@@ -80,6 +78,10 @@ public class frmInicio extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Botón para direccionarte a la lista de hoteles registrados.
+     * @param evt Evento que accionó el botón.
+     */
     private void btnHotelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHotelActionPerformed
         
         frmHoteles newFrm = new frmHoteles();

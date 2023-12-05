@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package Frames;
 
 import com.mongodb.MongoClient;
@@ -15,8 +12,9 @@ import javax.swing.table.DefaultTableModel;
 import org.bson.Document;
 
 /**
- *
- * @author PC
+ * Clase donde se mostrarán los hoteles registrados.
+ * @author Canché Sastré Marlon Alejandro
+ * @author Sánchez Rentería Juan Diego
  */
 public class frmHoteles extends javax.swing.JFrame {
 
@@ -27,8 +25,9 @@ public class frmHoteles extends javax.swing.JFrame {
     ArrayList<String> hoteles;
     String hotelSeleccionado;
 
+
     /**
-     * Creates new form frmHoteles
+     * Método constructor de la clase.
      */
     public frmHoteles() {
         this.hoteles = new ArrayList<>();
@@ -38,6 +37,9 @@ public class frmHoteles extends javax.swing.JFrame {
         mostrar();
     }
 
+    /**
+     * Método para insertar datos referentes a los hoteles.
+     */
     private void insertar() {
 //        Document hotel= new Document("_id","2")
 //                .append("nombre", "El Dorado")
@@ -55,6 +57,9 @@ public class frmHoteles extends javax.swing.JFrame {
 //        categoriaCollection.insertOne(categoria);
     }
 
+    /**
+     * Método para mostrar los datos de las habitaciones registradas.
+     */    
     private void mostrar() {
         MongoCursor<Document> cursor = hotelCollection.find().iterator();
 
@@ -110,6 +115,7 @@ public class frmHoteles extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Todos los hoteles disponibles de Hotel Inn");
 
+        tblHoteles.setFont(new java.awt.Font("Cambria Math", 0, 12)); // NOI18N
         tblHoteles.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -191,6 +197,10 @@ public class frmHoteles extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Método para la selección de un hotel en la tabla.
+     * @param evt Evento que accionó el método.
+     */
     private void tblHotelesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHotelesMouseClicked
         // TODO add your handling code here:
         int row = this.tblHoteles.getSelectedRow();
@@ -198,6 +208,10 @@ public class frmHoteles extends javax.swing.JFrame {
         System.out.println("HOTEL: " + hotelSeleccionado);
     }//GEN-LAST:event_tblHotelesMouseClicked
 
+    /**
+     * Botón para redireccionar a las habitaciones asociadas al hotel.
+     * @param evt Evento que accionó el botón.
+     */
     private void btnVerHabitacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerHabitacionesActionPerformed
         // TODO add your handling code here:
         if (!"".equals(this.hotelSeleccionado)) {
@@ -209,6 +223,10 @@ public class frmHoteles extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnVerHabitacionesActionPerformed
 
+    /**
+     * Botón para volver al menú principal de la habitación.
+     * @param evt Evento que accionó el botón.
+     */
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         // TODO add your handling code here:
         frmInicio newFrm = new frmInicio();
@@ -216,40 +234,7 @@ public class frmHoteles extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmHoteles.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmHoteles.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmHoteles.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmHoteles.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new frmHoteles().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnVerHabitaciones;

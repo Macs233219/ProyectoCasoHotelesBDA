@@ -6,6 +6,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
 import static com.mongodb.client.model.Filters.eq;
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import org.bson.Document;
 
@@ -21,7 +22,9 @@ public class frmHabitaciones extends javax.swing.JFrame {
     MongoDatabase database = mongoClient.getDatabase("hotel_proyecto");
     MongoCollection<Document> habitacionCollection = database.getCollection("habitacion");
     MongoCollection<Document> tarifaCollection = database.getCollection("tarifa");
+    ArrayList<String> habitaciones;
     String hotelSeleccionado;
+    String habitacionSeleccionada;
     
    
     
@@ -29,6 +32,7 @@ public class frmHabitaciones extends javax.swing.JFrame {
      * Método constructor de la clase.
      */
     public frmHabitaciones() {
+        this.habitaciones = new ArrayList<>();
         initComponents();
 //        this.insertar();
 //        this.mostrar();
@@ -101,6 +105,8 @@ public class frmHabitaciones extends javax.swing.JFrame {
                 tar.getDouble("precio")
             });
             tblHabitaciones.setModel(model);
+            
+            this.habitaciones.add(hab.getString("_id"));
         }
     }
 
@@ -148,6 +154,11 @@ public class frmHabitaciones extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblHabitaciones.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblHabitacionesMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tblHabitaciones);
 
         btnReservarHabitacion.setBackground(new java.awt.Color(255, 255, 204));
@@ -171,18 +182,18 @@ public class frmHabitaciones extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(34, Short.MAX_VALUE)
+                .addGap(21, 21, 21)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(354, 354, 354))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 757, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(btnReservarHabitacion)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnVolver))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 757, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 624, Short.MAX_VALUE)
+                                .addComponent(btnVolver)))
                         .addGap(28, 28, 28))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -190,13 +201,17 @@ public class frmHabitaciones extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(55, 55, 55)
                 .addComponent(jLabel1)
-                .addGap(48, 48, 48)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 135, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnReservarHabitacion)
-                    .addComponent(btnVolver))
-                .addGap(25, 25, 25))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 135, Short.MAX_VALUE)
+                        .addComponent(btnVolver)
+                        .addGap(25, 25, 25))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnReservarHabitacion)
+                        .addGap(35, 35, 35))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -215,9 +230,9 @@ public class frmHabitaciones extends javax.swing.JFrame {
             .addGap(0, 603, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGap(0, 15, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 15, Short.MAX_VALUE)))
         );
 
         pack();
@@ -231,6 +246,15 @@ public class frmHabitaciones extends javax.swing.JFrame {
     private void btnReservarHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReservarHabitacionActionPerformed
         // TODO add your handling code here:
         System.out.println("RESERVA PARA HOTEL: " + this.hotelSeleccionado);
+        System.out.println("RESERVA PARA HABITACIÓN: " + this.habitacionSeleccionada);
+        if (!"".equals(this.habitacionSeleccionada)) {
+            frmReservacion newFrm = new frmReservacion();
+            newFrm.setHotelSeleccionado(hotelSeleccionado);
+            newFrm.setHabitacionSeleccionada(habitacionSeleccionada);
+            newFrm.mostrar();
+            newFrm.setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_btnReservarHabitacionActionPerformed
 
     /**
@@ -244,6 +268,13 @@ public class frmHabitaciones extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
 
+    private void tblHabitacionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHabitacionesMouseClicked
+        // TODO add your handling code here:
+        int row = this.tblHabitaciones.getSelectedRow();
+        this.habitacionSeleccionada = this.habitaciones.get(row);
+        System.out.println(habitacionSeleccionada);
+    }//GEN-LAST:event_tblHabitacionesMouseClicked
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -254,4 +285,5 @@ public class frmHabitaciones extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tblHabitaciones;
     // End of variables declaration//GEN-END:variables
+
 }

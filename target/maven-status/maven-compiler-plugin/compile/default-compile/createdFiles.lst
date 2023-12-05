@@ -1,8 +1,7 @@
 Frames\frmHabitaciones.class
 Frames\frmReservacion$2.class
-FrmHoteles.class
+Frames\frmReservacion$3.class
 Frames\frmHoteles.class
-FrmHoteles$2.class
 Frames\frmReservacion$1.class
 Frames\frmHabitaciones$1.class
 Frames\frmHoteles$3.class
@@ -10,9 +9,8 @@ Frames\frmReservacion.class
 Frames\frmHabitaciones$2.class
 Frames\frmInicio$1.class
 Frames\frmInicio$2.class
-Frames\frmHoteles$4.class
-FrmHoteles$1.class
 Frames\frmHoteles$2.class
-ProyectoCasoHotelesBDA.class
 Frames\frmHoteles$1.class
+Frames\frmHabitaciones$3.class
+.netbeans_automatic_build
 Frames\frmInicio.class

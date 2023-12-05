@@ -1,0 +1,57 @@
+@options
+@packages
+@argfile
+-classpath
+'C:/Users/grupo/.m2/repository/mongo/mongo/1/mongo-1.jar;C:/Users/grupo/.m2/repository/org/mongodb/mongo-java-driver/3.12.11/mongo-java-driver-3.12.11.jar;C:/Users/grupo/.m2/repository/org/netbeans/external/AbsoluteLayout/RELEASE180/AbsoluteLayout-RELEASE180.jar;C:/Users/grupo/.m2/repository/com/github/lgooddatepicker/LGoodDatePicker/11.0.0/LGoodDatePicker-11.0.0.jar'
+-encoding
+'UTF-8'
+-protected
+-source
+'17'
+-sourcepath
+'C:/Users/grupo/OneDrive/Documentos/ProyectoMongo/ProyectoCasoHotelesBDA/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2023. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'C:/Users/grupo/OneDrive/Documentos/ProyectoMongo/ProyectoCasoHotelesBDA/target/site/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'ProyectoCasoHotelesBDA 1.0 API'
+-use
+-version
+-windowtitle
+'ProyectoCasoHotelesBDA 1.0 API'
+Frames
+'C:/Users/grupo/OneDrive/Documentos/ProyectoMongo/ProyectoCasoHotelesBDA/src/main/java/ProyectoCasoHotelesBDA.java'
+C:\Users\grupo\.m2\repository\mongo\mongo\1\mongo-1.jar = 1700006980000
+C:\Users\grupo\.m2\repository\org\mongodb\mongo-java-driver\3.12.11\mongo-java-driver-3.12.11.jar = 1701562972591
+C:\Users\grupo\.m2\repository\org\netbeans\external\AbsoluteLayout\RELEASE180\AbsoluteLayout-RELEASE180.jar = 1701645905371
+C:\Users\grupo\.m2\repository\com\github\lgooddatepicker\LGoodDatePicker\11.0.0\LGoodDatePicker-11.0.0.jar = 1701802010795
+C:\Users\grupo\OneDrive\Documentos\ProyectoMongo\ProyectoCasoHotelesBDA\src\main\java\ProyectoCasoHotelesBDA.java = 1701813368018
+C:\Users\grupo\OneDrive\Documentos\ProyectoMongo\ProyectoCasoHotelesBDA\src\main\java = 1701813368019
+C:\Users\grupo\OneDrive\Documentos\ProyectoMongo\ProyectoCasoHotelesBDA\target\site\apidocs\allclasses-index.html = 1701818702753
+C:\Users\grupo\OneDrive\Documentos\ProyectoMongo\ProyectoCasoHotelesBDA\target\site\apidocs\allpackages-index.html = 1701818702756
+C:\Users\grupo\OneDrive\Documentos\ProyectoMongo\ProyectoCasoHotelesBDA\target\site\apidocs\element-list = 1701818702592
+C:\Users\grupo\OneDrive\Documentos\ProyectoMongo\ProyectoCasoHotelesBDA\target\site\apidocs\help-doc.html = 1701818702785
+C:\Users\grupo\OneDrive\Documentos\ProyectoMongo\ProyectoCasoHotelesBDA\target\site\apidocs\index-all.html = 1701818702777
+C:\Users\grupo\OneDrive\Documentos\ProyectoMongo\ProyectoCasoHotelesBDA\target\site\apidocs\index.html = 1701818702741
+C:\Users\grupo\OneDrive\Documentos\ProyectoMongo\ProyectoCasoHotelesBDA\target\site\apidocs\jquery-ui.overrides.css = 1701818702803
+C:\Users\grupo\OneDrive\Documentos\ProyectoMongo\ProyectoCasoHotelesBDA\target\site\apidocs\member-search-index.js = 1701818702763
+C:\Users\grupo\OneDrive\Documentos\ProyectoMongo\ProyectoCasoHotelesBDA\target\site\apidocs\module-search-index.js = 1701818702758
+C:\Users\grupo\OneDrive\Documentos\ProyectoMongo\ProyectoCasoHotelesBDA\target\site\apidocs\overview-summary.html = 1701818702780
+C:\Users\grupo\OneDrive\Documentos\ProyectoMongo\ProyectoCasoHotelesBDA\target\site\apidocs\overview-tree.html = 1701818702737
+C:\Users\grupo\OneDrive\Documentos\ProyectoMongo\ProyectoCasoHotelesBDA\target\site\apidocs\package-search-index.js = 1701818702760
+C:\Users\grupo\OneDrive\Documentos\ProyectoMongo\ProyectoCasoHotelesBDA\target\site\apidocs\package-summary.html = 1701818702600
+C:\Users\grupo\OneDrive\Documentos\ProyectoMongo\ProyectoCasoHotelesBDA\target\site\apidocs\package-tree.html = 1701818702606
+C:\Users\grupo\OneDrive\Documentos\ProyectoMongo\ProyectoCasoHotelesBDA\target\site\apidocs\package-use.html = 1701818702729
+C:\Users\grupo\OneDrive\Documentos\ProyectoMongo\ProyectoCasoHotelesBDA\target\site\apidocs\ProyectoCasoHotelesBDA.html = 1701818702590
+C:\Users\grupo\OneDrive\Documentos\ProyectoMongo\ProyectoCasoHotelesBDA\target\site\apidocs\script.js = 1701818702789
+C:\Users\grupo\OneDrive\Documentos\ProyectoMongo\ProyectoCasoHotelesBDA\target\site\apidocs\search.js = 1701818702791
+C:\Users\grupo\OneDrive\Documentos\ProyectoMongo\ProyectoCasoHotelesBDA\target\site\apidocs\serialized-form.html = 1701818702701
+C:\Users\grupo\OneDrive\Documentos\ProyectoMongo\ProyectoCasoHotelesBDA\target\site\apidocs\stylesheet.css = 1701818702787
+C:\Users\grupo\OneDrive\Documentos\ProyectoMongo\ProyectoCasoHotelesBDA\target\site\apidocs\tag-search-index.js = 1701818702764
+C:\Users\grupo\OneDrive\Documentos\ProyectoMongo\ProyectoCasoHotelesBDA\target\site\apidocs\type-search-index.js = 1701818702761

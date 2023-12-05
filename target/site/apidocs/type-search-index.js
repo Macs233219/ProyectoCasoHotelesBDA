@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"Frames","l":"frmHabitaciones"},{"p":"Frames","l":"frmHoteles"},{"p":"Frames","l":"frmInicio"},{"p":"Frames","l":"frmReporte"},{"p":"Frames","l":"frmReservacion"},{"p":"<Unnamed>","l":"ProyectoCasoHotelesBDA"}];updateSearchResults();

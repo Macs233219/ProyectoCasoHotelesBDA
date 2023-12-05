@@ -7,8 +7,8 @@
     <packaging>jar</packaging>
     <dependencies>
         <dependency>
-            <groupId>mongo</groupId>
-            <artifactId>mongo</artifactId>
+            <groupId>mongodb</groupId>
+            <artifactId>mongodb</artifactId>
             <version>1</version>
         </dependency>
         <dependency>

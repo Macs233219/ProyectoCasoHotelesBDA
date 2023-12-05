@@ -33,8 +33,9 @@ public class frmHoteles extends javax.swing.JFrame {
         this.hoteles = new ArrayList<>();
         this.hotelSeleccionado = "";
         initComponents();
-//        insertar();
+
         mostrar();
+//        insertar();
     }
 
     /**
@@ -50,11 +51,11 @@ public class frmHoteles extends javax.swing.JFrame {
 //        
 //        hotelCollection.insertOne(hotel);
 //        
-//        Document categoria = new Document("_id","2")
-//                .append("estrellas", 4.0)
-//                .append("IVA", 4.5);
-//        
-//        categoriaCollection.insertOne(categoria);
+        Document categoria = new Document("_id","1")
+                .append("estrellas", 3.5)
+                .append("IVA", 5.5);
+        
+        categoriaCollection.insertOne(categoria);
     }
 
     /**

@@ -11,17 +11,91 @@ package Frames;
 public class frmReporte extends javax.swing.JFrame {
 
     /**
-     * Creates new form frmReporte
+     * Crea un nuevo form frmReporte
      */
     public frmReporte() {
         initComponents();
     }
-
-    public void establecer()
-    {
-        
+    
+    /**
+     * Este método muestra el hotel de la reservación en el reporte
+     * @param hotel El hotel de la reservación
+     */
+    public void setHotel(String hotel) {
+        this.lblHotel.setText(hotel);
     }
     
+    /**
+     * Este método muestra la dirección del cliente en el reporte
+     * @param direccion La dirección del cliente
+     */
+    public void setDireccion(String direccion) {
+        this.lblDireccion.setText(direccion);
+    }
+    
+    /**
+     * Este método muestra el número de teléfono del cliente
+     * @param telefono El número de teléfono del cliente
+     */
+    public void setTelefono(String telefono) {
+        this.lblTelefono.setText(telefono);
+    }
+    
+    /**
+     * Este método muestra las estrellas del hotel en el reporte
+     * @param estrellas Las estrellas del hotel
+     */
+    public void setEstrellas(String estrellas) {
+        this.lblEstrellas.setText(estrellas);
+    }
+    
+    /**
+     * Este método muestra el número de habitación en el reporte
+     * @param numeroCuarto El número de habitación
+     */
+    public void setNumeroCuarto(String numeroCuarto) {
+        this.lblIdentificador.setText(numeroCuarto);
+    }
+    
+    /**
+     * Este método muestra la clase de la habitación en el reporte
+     * @param tipo La clase de la habitación reservada
+     */
+    public void setClase(String tipo) {
+        this.lblClase.setText(tipo);
+    }
+    
+    /**
+     * Este método muestra el periodo de estancia en el reporte
+     * @param periodo El periodo de estancia
+     */
+    public void setPeriodo(String periodo) {
+        this.lblPeriodo.setText(periodo);
+    }
+    
+    /**
+     * Este método muestra el nombre del cliente en el reporte
+     * @param nombre El nombre del cliente de la reservación
+     */
+    public void setNombre(String nombre) {
+        this.lblCliente.setText(nombre);
+    }
+    
+    /**
+     * Este método muestra la agencia en el reporte
+     * @param empresa La agencia implicada en la reservación
+     */
+    public void setAgencia(String empresa) {
+        this.lblEmpresa.setText(empresa);
+    }
+    
+    /**
+     * Este método muestra el precio total en el reporte
+     * @param precio El precio total de la reservación
+     */
+    public void setPrecio(String precio) {
+        this.lblPrecio.setText(precio);
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -54,7 +128,7 @@ public class frmReporte extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         lblEmpresa = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
+        lblPrecio = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -162,18 +236,18 @@ public class frmReporte extends javax.swing.JFrame {
         lblEmpresa.setFont(new java.awt.Font("Cambria Math", 0, 14)); // NOI18N
         lblEmpresa.setForeground(new java.awt.Color(51, 0, 0));
         lblEmpresa.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblEmpresa.setText("55");
+        lblEmpresa.setText("---");
 
         jLabel20.setBackground(new java.awt.Color(255, 255, 255));
         jLabel20.setFont(new java.awt.Font("Cambria Math", 0, 18)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(51, 0, 0));
         jLabel20.setText("Total (IVA incluído):");
 
-        jLabel21.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel21.setFont(new java.awt.Font("Cambria Math", 0, 14)); // NOI18N
-        jLabel21.setForeground(new java.awt.Color(51, 0, 0));
-        jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel21.setText("55");
+        lblPrecio.setBackground(new java.awt.Color(255, 255, 255));
+        lblPrecio.setFont(new java.awt.Font("Cambria Math", 0, 14)); // NOI18N
+        lblPrecio.setForeground(new java.awt.Color(51, 0, 0));
+        lblPrecio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblPrecio.setText("55");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -227,7 +301,7 @@ public class frmReporte extends javax.swing.JFrame {
                         .addComponent(jLabel20))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(108, 108, 108)
-                        .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(lblPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -272,7 +346,7 @@ public class frmReporte extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel20)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(10, Short.MAX_VALUE))
         );
 
@@ -320,7 +394,6 @@ public class frmReporte extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -336,6 +409,7 @@ public class frmReporte extends javax.swing.JFrame {
     private javax.swing.JLabel lblHotel;
     private javax.swing.JLabel lblIdentificador;
     private javax.swing.JLabel lblPeriodo;
+    private javax.swing.JLabel lblPrecio;
     private javax.swing.JLabel lblTelefono;
     // End of variables declaration//GEN-END:variables
 }

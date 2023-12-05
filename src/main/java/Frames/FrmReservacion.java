@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
  */
 public class frmReservacion extends javax.swing.JFrame {
 
-
+    private frmReporte newFrm;
     private String hotelSeleccionado;
     private String habitacionSeleccionada;
     MongoClient mongoClient = new MongoClient("localhost",27017);
@@ -37,10 +37,16 @@ public class frmReservacion extends javax.swing.JFrame {
      * Método constructor de la clase.
      */
     public frmReservacion() {
+        this.newFrm = new frmReporte();
         initComponents();
     }
     
-    
+    /**
+     * Este método genera un número aleatorio para asignar identificadores
+     * @param min El límite mínimo
+     * @param max El límite máximo
+     * @return El número aleatorio
+     */
     public int obtenerNumeroRandom(int min, int max)
     {
         int n =(int)(Math.random() * (max - min)) + min;
@@ -468,7 +474,9 @@ public class frmReservacion extends javax.swing.JFrame {
                 .append("telefono", Long.valueOf((txtTelefono.getText())));
         
         clienteCollection.insertOne(cliente);
-        
+        newFrm.setNombre(txtNombre.getText());
+        newFrm.setDireccion(txtDireccion.getText());
+        newFrm.setTelefono(txtTelefono.getText());
         
         if(txtAgencia.getText().equals(""))
         {
@@ -482,6 +490,7 @@ public class frmReservacion extends javax.swing.JFrame {
                 .append("precioEstancia", Double.valueOf(txtPrecio.getText()));  
         
         reservacionCollection.insertOne(reservacion);
+        newFrm.setPeriodo(fechaInicio + "-" + fechaFin);
         
         }
         
@@ -495,6 +504,8 @@ public class frmReservacion extends javax.swing.JFrame {
         
         agenciaViajeCollection.insertOne(agencia);
         
+        newFrm.setAgencia(txtAgencia.getText());
+        
         Document reservacion = new Document("id",idReservacion)
                 .append("idAgenciaViajes",idAgencia)
                 .append("idCliente", idCliente)
@@ -504,7 +515,8 @@ public class frmReservacion extends javax.swing.JFrame {
         reservacionCollection.insertOne(reservacion);
         }
         
-        
+        this.newFrm.setVisible(true);
+        this.dispose();
         
         
 
@@ -528,6 +540,10 @@ public class frmReservacion extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnVolverActionPerformed
 
+    /**
+     * Botón para calcular el precio total del hotel
+     * @param evt Evento que accionó el botón
+     */
     private void btnCalcularPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularPrecioActionPerformed
         
         if(txtInicioAnio.getText().equals("") || txtInicioMes.getText().equals("") || txtInicioDia.getText().equals("") || txtFinAnio.getText().equals("") || txtFinMes.getText().equals("") || txtFinDia.getText().equals("")  )
@@ -562,6 +578,7 @@ public class frmReservacion extends javax.swing.JFrame {
            
            
            txtPrecio.setText(df.format(total));
+           newFrm.setPrecio(df.format(total));
            
 
         
@@ -574,6 +591,10 @@ public class frmReservacion extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnCalcularPrecioActionPerformed
 
+    /**
+     * Evita ingresar letras en el campo de año de inicio
+     * @param evt Evento de ingresar dato en el campo de año de inicio
+     */
     private void txtInicioAnioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtInicioAnioKeyTyped
         
                 char c = evt.getKeyChar();
@@ -584,6 +605,10 @@ public class frmReservacion extends javax.swing.JFrame {
         
     }//GEN-LAST:event_txtInicioAnioKeyTyped
 
+    /**
+     * Evita ingresar letras en el campo de mes de inicio
+     * @param evt Evento de ingresar dato en el campo de mes de inicio
+     */
     private void txtInicioMesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtInicioMesKeyTyped
                 char c = evt.getKeyChar();
 
@@ -592,6 +617,10 @@ public class frmReservacion extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtInicioMesKeyTyped
 
+    /**
+     * Evita ingresar letras en el campo de día de inicio
+     * @param evt Evento de ingresar dato en el campo de día de inicio
+     */
     private void txtInicioDiaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtInicioDiaKeyTyped
                 char c = evt.getKeyChar();
 
@@ -600,6 +629,10 @@ public class frmReservacion extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtInicioDiaKeyTyped
 
+    /**
+     * Evita ingresar letras en el campo de año fin
+     * @param evt Evento de ingresar dato en el campo de año fin
+     */
     private void txtFinAnioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFinAnioKeyTyped
                 char c = evt.getKeyChar();
 
@@ -608,6 +641,10 @@ public class frmReservacion extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtFinAnioKeyTyped
 
+    /**
+     * Evita ingresar letras en el campo de mes fin
+     * @param evt Evento de ingresar dato en el campo de mes fin
+     */
     private void txtFinMesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFinMesKeyTyped
                 char c = evt.getKeyChar();
 
@@ -616,6 +653,10 @@ public class frmReservacion extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtFinMesKeyTyped
 
+    /**
+     * Evita ingresar letras en el campo de día fin
+     * @param evt Evento de ingresar dato en el campo de día fin
+     */
     private void txtFinDiaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFinDiaKeyTyped
                 char c = evt.getKeyChar();
 
@@ -624,6 +665,10 @@ public class frmReservacion extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtFinDiaKeyTyped
 
+    /**
+     * Selecciona el modo de reservación para agencia o persona normal
+     * @param evt Evento de accionar el combo box
+     */
     private void cmbClienteItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbClienteItemStateChanged
         
         
@@ -647,6 +692,10 @@ public class frmReservacion extends javax.swing.JFrame {
         
     }//GEN-LAST:event_cmbClienteItemStateChanged
 
+    /**
+     * Evita ingresar letras en el campo de teléfono
+     * @param evt Evento de ingresar dato en el campo de teléfono
+     */
     private void txtTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTelefonoKeyTyped
         
                       char c = evt.getKeyChar();
@@ -658,24 +707,43 @@ public class frmReservacion extends javax.swing.JFrame {
         
     }//GEN-LAST:event_txtTelefonoKeyTyped
 
+    /**
+     * Define la habitación seleccionada por el cliente
+     * @param habitacionSeleccionada Habitación seleccionada por el cliente
+     */
     public void setHabitacionSeleccionada(String habitacionSeleccionada) {
         this.habitacionSeleccionada = habitacionSeleccionada;
     }
     
+    /**
+     * Define el hotel seleccionado por el cliente
+     * @param hotelSeleccionado Hotel seleccionado por el cliente
+     */
     void setHotelSeleccionado(String hotelSeleccionado) {
         this.hotelSeleccionado = hotelSeleccionado;
     }
 
+    /**
+     * Muestra los datos de la habitación y hotel seleccionados para la reservación
+     */
     void mostrar() {
         Document hab = habitacionCollection.find(eq("_id", this.habitacionSeleccionada)).first();
         this.txtHabitacion.setText(hab.getString("identificador"));
         this.txtHabitacion.setEditable(false);
+        this.newFrm.setNumeroCuarto(hab.getString("identificador"));
+        
         this.txtClase.setText(hab.getString("tipo"));
         this.txtClase.setEditable(false);
+        this.newFrm.setClase(hab.getString("tipo"));
+        
         Document hot = hotelCollection.find(eq("_id", this.hotelSeleccionado)).first();
+        this.newFrm.setHotel(hot.getString("nombre"));
+        
         Document cat = categoriaCollection.find(eq("_id", hot.getString("idCategoria"))).first();
         this.txtCategoria.setText(String.valueOf(cat.getDouble("IVA")));
         this.txtCategoria.setEditable(false);
+        this.newFrm.setEstrellas(String.valueOf(cat.getDouble("estrellas")));
+        
         Document tar = tarifaCollection.find(eq("idHabitacion", this.habitacionSeleccionada)).first();
         this.txtTarifa.setText(String.valueOf(tar.getDouble("precio")));
         this.txtTarifa.setEditable(false);

@@ -268,6 +268,10 @@ public class frmHabitaciones extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
 
+    /**
+     * Este método identifica el hotel seleccionado
+     * @param evt Evento de selección en la tabla
+     */
     private void tblHabitacionesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHabitacionesMouseClicked
         // TODO add your handling code here:
         int row = this.tblHabitaciones.getSelectedRow();
